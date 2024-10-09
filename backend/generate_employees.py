@@ -1,6 +1,7 @@
 import pandas as pd
 import random
 import json
+from flask import request
 
 def generate_sample_data(num_samples = 5):
     employee_names = ["Alice", "Bob", "Aridsondez", "Jerome", "Daniel"]
@@ -84,5 +85,14 @@ def parse_availibility(time_slots):
     formatted_slots = [f"{start}:00 - {end}:00" for start, end in merged_slots]
 
     return formatted_slots
+
+
+def send_employees_to_backend():
+    with open('employee_data.csv') as f:
+        df = pd.read_csv(f)
+        employee_list = df.to_dict(oreint = 'records')
+    response = request.post("http://localhost:5000/add_employees", json=employee_list)
+    print(response.json())
+
 
 generate_sample_data(4)
