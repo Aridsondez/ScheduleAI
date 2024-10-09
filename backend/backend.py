@@ -43,9 +43,17 @@ class Employee(db.Model):
 
 @app.route("/add_employees", methods=['POST'])
 def add_employee():
-    # Here, you'd typically get data from the request
-    new_employee = Employee(name="Tom", efficiency=85, relationships={"Jerry": 10}, availibility={"Monday": ["8:00 AM - 10:00 PM"]})
-    db.session.add(new_employee)
+    data = request.get_json()
+
+    for employee_data in data:
+        new_employee = Employee(
+            name = employee_data.get('name'),
+            efficiency= employee_data.get('efficiency'),
+            relationships=employee_data.get('relationships'),
+            availibility=employee_data.get('availability')
+        )
+        db.session.add(new_employee)
+    
     db.session.commit()
     return jsonify({"message": "Employee added!"}), 201
 
