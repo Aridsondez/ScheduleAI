@@ -35,7 +35,7 @@ def generate_random_availability():
             
             for _ in range(num_slots):
                 # Define a start hour that is at least after the last end time
-                start_hour = available_hours
+                start_hour = min(available_hours + random.randint(0,12),18)
                 end_hour = min(start_hour + random.randint(1, 4), 22)  # End time can be between 1 and 4 hours after start, but no later than 10 PM
                 
                 time_slots.append(f"{start_hour}:00 - {end_hour}:00")
@@ -43,7 +43,7 @@ def generate_random_availability():
                 # Update available_hours to start after the current shift ends
                 available_hours = end_hour
             
-            availability[day] = time_slots
+            availability[day] = parse_availibility( time_slots)
     return availability
 
 
@@ -54,5 +54,35 @@ def generate_random_relationships(employee_names):
         relationships[employees]= random.randint(0, 10)
     return relationships
 
+
+def parse_availibility(time_slots):
+    if not time_slots:
+        return []
+    parsed_slots = []
+
+    for slot in time_slots:
+        start_time, end_time = slot.split(" - ")
+        start_hour = int (start_time.split(":")[0])
+        end_hour = int (end_time.split(":")[0])
+        parsed_slots.append((start_hour,end_hour))
+
+    parsed_slots.sort()
+
+    # Merge overlapping or consecutive time slots
+    merged_slots = [parsed_slots[0]]
+    for current_slot in parsed_slots[1:]:
+        last_merged_slot = merged_slots[-1]
+
+        if current_slot[0] <= last_merged_slot[1]:  # If overlapping or consecutive
+            # Merge the slots by extending the end time
+            merged_slots[-1] = (last_merged_slot[0], max(last_merged_slot[1], current_slot[1]))
+        else:
+            # Add a new time slot if no overlap
+            merged_slots.append(current_slot)
+
+    # Convert merged slots back to "start_hour:end_hour" format
+    formatted_slots = [f"{start}:00 - {end}:00" for start, end in merged_slots]
+
+    return formatted_slots
 
 generate_sample_data(4)
