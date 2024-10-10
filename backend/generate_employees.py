@@ -17,8 +17,8 @@ def generate_sample_data(num_samples = 5):
         data.append({
             "name": name,
             "efficiency": efficiency,
-            "availability" : json.dumps(availability),
-            "relationships" : json.dumps(relationships)
+            "availability" : availability,
+            "relationships" : relationships
         })
 
         df = pd.DataFrame(data)

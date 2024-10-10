@@ -89,6 +89,20 @@ def get_employees():
     employees = Employee.query.all()
     return jsonify([{'Alpha': employee.name, "efficiency": employee.efficiency, "relationships": employee.relationships, "availiblity": employee.availibility} for employee in employees])   
 
+@app.route("/delete_all_employees", methods=['DELETE'])
+def delete_all_employees():
+    try:
+        # Delete all records from the Employee table
+        num_rows_deleted = db.session.query(Employee).delete()
+        
+        # Commit the changes
+        db.session.commit()
+
+        return jsonify({"message": f"Deleted {num_rows_deleted} employees."}), 200
+
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"message": f"An error occurred: {str(e)}"}), 500
 
 if __name__ == '__main__':
     with app.app_context():

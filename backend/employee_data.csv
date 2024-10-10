@@ -1,5 +1,5 @@
 name,efficiency,availability,relationships
-Aridsondez,94,"{""Monday"": [""8:00 - 10:00"", ""11:00 - 18:00""], ""Sunday"": [""6:00 - 8:00"", ""18:00 - 19:00""]}","{""Alice"": 1, ""Bob"": 0, ""Aridsondez"": 3, ""Jerome"": 8, ""Daniel"": 5}"
-Jerome,51,"{""Tuesday"": [""6:00 - 9:00"", ""18:00 - 21:00""], ""Satuday"": [""9:00 - 10:00""], ""Sunday"": [""17:00 - 21:00""]}","{""Alice"": 1, ""Bob"": 0, ""Aridsondez"": 7, ""Jerome"": 1, ""Daniel"": 8}"
-Daniel,70,"{""Tuesday"": [""13:00 - 15:00"", ""18:00 - 19:00""], ""Satuday"": [""13:00 - 15:00"", ""18:00 - 21:00""], ""Sunday"": [""7:00 - 9:00"", ""12:00 - 13:00"", ""18:00 - 21:00""]}","{""Alice"": 10, ""Bob"": 2, ""Aridsondez"": 0, ""Jerome"": 7, ""Daniel"": 4}"
-Aridsondez,64,"{""Tuesday"": [""7:00 - 8:00""], ""Friday"": [""6:00 - 9:00"", ""14:00 - 17:00""], ""Satuday"": [""8:00 - 11:00"", ""12:00 - 16:00""]}","{""Alice"": 7, ""Bob"": 4, ""Aridsondez"": 7, ""Jerome"": 4, ""Daniel"": 3}"
+Jerome,97,"{'Tuesday': ['6:00 - 9:00'], 'Wednesday': ['14:00 - 20:00'], 'Friday': ['14:00 - 15:00', '18:00 - 21:00'], 'Sunday': ['14:00 - 18:00']}","{'Alice': 6, 'Bob': 8, 'Aridsondez': 3, 'Jerome': 6, 'Daniel': 4}"
+Jerome,52,"{'Tuesday': ['7:00 - 11:00'], 'Friday': ['6:00 - 9:00'], 'Sunday': ['13:00 - 14:00']}","{'Alice': 1, 'Bob': 3, 'Aridsondez': 1, 'Jerome': 2, 'Daniel': 3}"
+Aridsondez,52,{},"{'Alice': 10, 'Bob': 7, 'Aridsondez': 7, 'Jerome': 4, 'Daniel': 2}"
+Alice,97,"{'Wednesday': ['9:00 - 10:00'], 'Satuday': ['9:00 - 10:00', '18:00 - 20:00'], 'Sunday': ['6:00 - 7:00', '18:00 - 22:00']}","{'Alice': 9, 'Bob': 4, 'Aridsondez': 4, 'Jerome': 5, 'Daniel': 0}"
